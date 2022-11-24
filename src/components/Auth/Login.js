@@ -7,9 +7,9 @@ import {
   MDBCard,
   MDBCardBody,
   MDBInput,
-  MDBIcon,
 } from "mdb-react-ui-kit";
 import "./Login.css";
+import { handleLoginAPI } from "../../services/accountService";
 
 class Login extends Component {
   constructor(props) {
@@ -35,8 +35,8 @@ class Login extends Component {
     });
   };
 
-  handleLogin = () => {
-    alert("btn");
+  handleLogin = async () => {
+    await handleLoginAPI(this.state.username, this.state.password);
   };
 
   handleShowHidePassword = () => {

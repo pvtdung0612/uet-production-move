@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Login from "../components/Login";
+import React from "react";
+import Login from "../components/Auth/Login";
 class App extends React.Component {
   render() {
     return (

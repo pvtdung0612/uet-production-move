@@ -46,3 +46,10 @@ input#formControlLg {
   top: 10px;
   right: 10px;
 }
+
+.login-message {
+  margin: -15px 0px 0px 0px;
+}
+.panel-input {
+  width: 100%;
+}

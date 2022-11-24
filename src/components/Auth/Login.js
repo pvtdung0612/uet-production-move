@@ -18,6 +18,7 @@ class Login extends Component {
       username: "",
       password: "",
       isShowPassword: false,
+      loginMessage: "",
     };
   }
 
@@ -36,7 +37,17 @@ class Login extends Component {
   };
 
   handleLogin = async () => {
-    await handleLoginAPI(this.state.username, this.state.password);
+    try {
+      await handleLoginAPI(this.state.username, this.state.password).then(
+        (response) => {
+          this.setState({
+            loginMessage: response.data.message,
+          });
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   handleShowHidePassword = () => {
@@ -90,10 +101,18 @@ class Login extends Component {
                       ></i>
                     </span>
                   </div>
+
+                  <div
+                    className="col-12 login-message"
+                    style={{ color: "red" }}
+                  >
+                    {this.state.loginMessage}
+                  </div>
                 </div>
+
                 <MDBBtn
                   outline
-                  className="mx-2 px-5"
+                  className="mx-2 px-5 mt-3"
                   size="lg"
                   onClick={() => this.handleLogin()}
                 >

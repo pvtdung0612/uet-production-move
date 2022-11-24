@@ -1,20 +1,25 @@
 import axios from "axios";
 
-const handleLoginAPI = async (username, password) => {
-  axios
-    .post("http://localhost:5000/api/login", {
-      username,
-      password,
-    })
-    .then((response) => {
-      console.log("result: :", response.data.message);
-    })
-    .catch(function (error) {
-      // handle error
-      console.log("error: ", error.response.data.message);
-    });
+axios.create({
+  baseURL: process.env.REACT_APP_BACKEND_URL,
+});
 
-  return true;
+const handleLoginAPI = async (username, password) => {
+  let responseData;
+
+  return axios.post("/api/login", {
+    username,
+    password,
+  });
+  // .then((response) => {
+  //   responseData = response.data;
+  // })
+  // .catch(function (error) {
+  //   // handle error
+  //   responseData = error.response.data;
+  // });
+
+  // return responseData;
 };
 
 export { handleLoginAPI };
